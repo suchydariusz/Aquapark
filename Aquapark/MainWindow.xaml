@@ -1,0 +1,124 @@
+﻿<Window x:Class="Aquapark.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aquapark" 
+        mc:Ignorable="d"
+        Title="Aquapark" Height="462.8" Width="800" ResizeMode="CanMinimize"
+        KeyDown="Help_KeyDown">
+
+
+    <Grid Margin="0,5,0,-2">
+        <TabControl HorizontalAlignment="Left" Height="421" VerticalAlignment="Bottom" Width="792">
+            <TabItem Header="Sprzedaż Biletów">
+                <Grid Background="#FFE5E5E5" Margin="0,2,0.4,-2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="151*"/>
+                        <ColumnDefinition Width="635*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Name="AvailableServicesListBox" HorizontalAlignment="Left" Height="315" Margin="10,10,0,0" VerticalAlignment="Top" Width="353" Grid.ColumnSpan="2" SelectionChanged="AvailableServicesListBox_SelectionChanged" Loaded="AvailableServicesListBox_Loaded">
+                    </ListBox>
+                    <Button x:Name="bt_buyButton" Content="Kup" HorizontalAlignment="Left" Height="30" Margin="260,150,0,0" VerticalAlignment="Top" Width="339" Click="Bt_buyButton_Click" Grid.Column="1"/>
+                    <TextBox x:Name="tb_price" HorizontalAlignment="Left" Height="22" Margin="345,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsReadOnly="True" Grid.Column="1"/>
+                    <Label Content="Cena:" HorizontalAlignment="Left" Margin="297,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.479,0.023" Width="93" Height="34" Grid.Column="1"/>
+                    <Label Content="Zamówienie:" HorizontalAlignment="Left" Margin="260,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.375,0.57" Grid.Column="1"/>
+                    <TextBox x:Name="tb_order" HorizontalAlignment="Left" Height="23" Margin="345,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" IsReadOnly="True" Grid.Column="1"/>
+                    <Label Content="Id zegarka:" HorizontalAlignment="Left" Margin="270,93,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="cb_saleIdRfid" HorizontalAlignment="Left" Margin="345,98,0,0" VerticalAlignment="Top" Width="254" DropDownOpened="Cb_saleIdRfid_DropDownOpened" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sprzedaż Karnetów">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_passName" Content="Imię:" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <TextBox x:Name="tb_orderName" HorizontalAlignment="Left" Height="20" Margin="268,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Visibility="Hidden"/>
+                    <Button x:Name="bt_addClient" Content="Dodaj klienta" HorizontalAlignment="Left" Height="30" Margin="268,137,0,0" VerticalAlignment="Top" Width="242" Click="Bt_addClient_Click" Visibility="Hidden"/>
+                    <Label x:Name="label_passSurname" Content="Nazwisko:" HorizontalAlignment="Left" Margin="33,99,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <TextBox x:Name="tb_orderSurname" HorizontalAlignment="Left" Height="20" Margin="268,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Visibility="Hidden"/>
+
+                    <Label Content="PESEL:" HorizontalAlignment="Left" Margin="33,37,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tb_clientPesel" HorizontalAlignment="Left" Height="23" Margin="268,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" MaxLength="11" TextChanged="Tb_clientPesel_TextChanged"/>
+                    <Label Content="Sprzedaż karnetów 30-dniowych w cenie 179zł" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_checkPesel" Content="" HorizontalAlignment="Left" Margin="538,37,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="bt_orderPass" Content="Kup karnet" HorizontalAlignment="Left" Margin="268,191,0,0" VerticalAlignment="Top" Width="256" Height="30" Click="Bt_orderPass_Click" Visibility="Hidden"/>
+                    <Button x:Name="bt_enterPoolPass" Content="Wejdź do aquaparku" HorizontalAlignment="Left" Margin="268,250,0,0" VerticalAlignment="Top" Width="256" Height="30" Click="Bt_enterPoolPass_Click" Visibility="Hidden"/>
+                    <Label x:Name="label_idRFIDPass" Content="Id zegarka:" HorizontalAlignment="Left" Margin="554,254,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <ComboBox x:Name="cb_RFIDPass" HorizontalAlignment="Left" Margin="636,257,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cb_RFIDPass_DropDownOpened" Visibility="Hidden"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Raporty">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="lb_reports" HorizontalAlignment="Left" Height="266" Margin="22,14,0,0" VerticalAlignment="Top" Width="266">
+                        <ListBoxItem>Zestawienie karnetowiczów</ListBoxItem>
+                        <ListBoxItem>Status zegarków</ListBoxItem>
+                        <ListBoxItem>Aktualny cennik</ListBoxItem>
+                        <ListBoxItem>Odwiedziny w danym okresie</ListBoxItem>
+                        <ListBoxItem>Popularność atrakcji w danym okresie</ListBoxItem>
+                        <ListBoxItem>Przychody w danym okresie</ListBoxItem>
+                    </ListBox>
+                    <Button x:Name="bt_reportGenerate" Content="Wygeneruj Raport" HorizontalAlignment="Center" Height="42" Margin="256,327,263,0" VerticalAlignment="Top" Width="267" Click="Bt_reportGenerate_Click"/>
+                    <Calendar x:Name="cal_reports" HorizontalAlignment="Left" Margin="309,14,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" SelectionMode="SingleRange"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Modyfikacja cennika">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="lb_priceList" HorizontalAlignment="Left" Height="186" Margin="10,10,0,0" VerticalAlignment="Top" Width="353" Loaded="Lb_priceList_Loaded" SelectionChanged="Lb_priceList_SelectionChanged">
+                    </ListBox>
+                    <Label Content="Stara cena" HorizontalAlignment="Left" Margin="390,9,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nowa cena" HorizontalAlignment="Left" Margin="390,164,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tb_prmodifyOldPrice" HorizontalAlignment="Left" Height="18" Margin="494,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253" IsReadOnly="True"/>
+                    <TextBox x:Name="tb_prmodifyNewPrice" HorizontalAlignment="Left" Height="18" Margin="494,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253"/>
+                    <Button x:Name="bt_changePrice" Content="Zmień cenę biletu" HorizontalAlignment="Left" Height="27" Margin="630,221,0,0" VerticalAlignment="Top" Width="117" Click="Bt_changePrice_Click"/>
+                    <Label Content="Zakres obowiązywania" HorizontalAlignment="Left" Margin="390,189,0,0" VerticalAlignment="Top" Width="132"/>
+                    <Calendar x:Name="cal_prmodifyWhenStart" HorizontalAlignment="Left" Margin="390,215,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" SelectionMode="SingleRange"/>
+                    <ListBox x:Name="lb_priceAttraction" HorizontalAlignment="Left" Height="189" Margin="10,201,0,0" VerticalAlignment="Top" Width="353" Loaded="Lb_priceAttraction_Loaded" SelectionChanged="Lb_priceAttraction_SelectionChanged"/>
+                    <Button x:Name="bt_changePriceAttraction" Content="Zmień cenę atrakcji" HorizontalAlignment="Left" Margin="630,257,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Bt_changePriceAttraction_Click"/>
+                    <DataGrid x:Name="gd_planned" HorizontalAlignment="Left" Height="114" Margin="494,36,0,0" VerticalAlignment="Top" Width="253"/>
+                    <Label Content="Zaplanowane" HorizontalAlignment="Left" Margin="390,40,0,0" VerticalAlignment="Top" Height="26"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Rozliczenie Końcowe">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="bt_finalScan" Content="Skanuj RFID" HorizontalAlignment="Center" Height="30" Margin="286,22,285,0" VerticalAlignment="Top" Width="215" Click="Bt_finalScan_Click"/>
+                    <ListBox x:Name="lb_finalServices" HorizontalAlignment="Left" Height="262" Margin="10,76,0,0" VerticalAlignment="Top" Width="491"/>
+                    <Label Content="Łączna cena:" HorizontalAlignment="Left" Margin="515,76,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Usługi:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.278,0.563"/>
+                    <TextBox x:Name="tb_finalPrice" HorizontalAlignment="Left" Height="22" Margin="605,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" IsReadOnly="True"/>
+                    <Button x:Name="bt_finalSummary" Content="Zapłać" HorizontalAlignment="Left" Height="30" Margin="605,116,0,0" VerticalAlignment="Top" Width="86" Click="Bt_finalSummary_Click"/>
+                    <ComboBox x:Name="cb_finalRFID" HorizontalAlignment="Left" Margin="131,22,0,0" VerticalAlignment="Top" Width="120" Height="30" DropDownOpened="Cb_finalRFID_DropDownOpened"/>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Symulator Bramek">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="RFID:" HorizontalAlignment="Left" Margin="19,25,0,0" VerticalAlignment="Top"/>
+                    <Label Content="ID Bramki: " HorizontalAlignment="Left" Margin="19,56,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="bt_gate" Content="Przejdź" HorizontalAlignment="Center" Height="26" Margin="120,95,572,0" VerticalAlignment="Top" Width="94" Click="Bt_gate_Click"/>
+
+
+                    <ComboBox x:Name="cb_gateRFID" HorizontalAlignment="Left" Margin="120,27,0,0" VerticalAlignment="Top" Width="94" DropDownOpened="Cb_gateRFID_DropDownOpened"/>
+                    <ComboBox x:Name="cb_gateID" HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Width="94" DropDownOpened="Cb_gateID_DropDownOpened"/>
+
+                </Grid>
+            </TabItem>
+            <!--<TabItem Header="Pomoc">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>-->
+            <TabItem Header="Zarządzanie zegarkami">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="gd_RFID" HorizontalAlignment="Left" Height="361" Margin="64,19,0,0" VerticalAlignment="Top" Width="86" Loaded="Gd_RFID_Loaded" IsReadOnly="True" />
+                    <Button x:Name="bt_changeStatusRFID" Content="Zmień status" HorizontalAlignment="Left" Margin="194,19,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Bt_changeStatusRFID_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="bt_addRFID" Content="Dodaj nowy RFID" HorizontalAlignment="Left" Margin="194,71,0,0" VerticalAlignment="Top" Width="117" Height="27" Click="Bt_addRFID_Click" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <!-- MouseLeftButtonDown="Grid_MouseLeftButtonDown" do grida ponizej-->
+
+
+    </Grid>
+
+</Window>

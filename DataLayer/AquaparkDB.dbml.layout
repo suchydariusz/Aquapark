@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AquaparkDB">
+  <DataContextMoniker Name="/AquaparkDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9d4282ca-a8f6-41cd-a7c7-2a70e7dbeba0" isExpanded="false" absoluteBounds="5.75, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_Attraction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43f82bdd-7b2c-4a24-a16a-084c5d907599" absoluteBounds="5.765, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0950ae50-97e3-45fb-8d14-36bd242ce1c5" absoluteBounds="6.25, 1.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_Gate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32d72d70-013e-4eac-9b2a-939e1df61b13" absoluteBounds="6.2650000000000006, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7 : 0.95); (7 : 1.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Attraction/tbl_Attraction_tbl_Gate" />
+      <nodes>
+        <classShapeMoniker Id="9d4282ca-a8f6-41cd-a7c7-2a70e7dbeba0" />
+        <classShapeMoniker Id="0950ae50-97e3-45fb-8d14-36bd242ce1c5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="996eebe9-cae5-4520-8ead-68534692e56e" absoluteBounds="6, 4.75, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_Pass" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ab29b46d-40b0-4bc5-b80e-f5deffe9f5fa" absoluteBounds="6.0150000000000006, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24b7d376-2790-4e79-b26b-b241f94cddfd" absoluteBounds="0.75, 2.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_PriceList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="493e19dc-04b9-4983-9063-4a9d417ce7da" absoluteBounds="0.765, 3.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f09f48f0-a1bb-4320-84af-1a63542be4b0" isExpanded="false" absoluteBounds="0.75, 4.5, 2, 0.45">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_RFIDWatch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d0b4508-796a-4f9b-9f3d-9ecca99f71ad" absoluteBounds="0.76500000000000012, 4.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5861280-34fa-4489-ac83-c322d6ea3bf7" isExpanded="false" absoluteBounds="7, 3.25, 2, 0.45">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_Client" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cd24b1c-9b08-4750-8458-308627f52f72" absoluteBounds="7.0150000000000006, 3.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.5 : 3.7); (7.5 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Client/tbl_Client_tbl_Pass" />
+      <nodes>
+        <classShapeMoniker Id="c5861280-34fa-4489-ac83-c322d6ea3bf7" />
+        <classShapeMoniker Id="996eebe9-cae5-4520-8ead-68534692e56e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="19a6e33e-8811-48aa-a98b-a0db9e449907" absoluteBounds="3.375, 1.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_PriceListAttraction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61d5d269-f534-42cb-beb9-aae3a8b9ddeb" absoluteBounds="3.3899999999999997, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 0.95); (5.375 : 1.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Attraction/tbl_Attraction_tbl_PriceListAttraction" />
+      <nodes>
+        <classShapeMoniker Id="9d4282ca-a8f6-41cd-a7c7-2a70e7dbeba0" />
+        <classShapeMoniker Id="19a6e33e-8811-48aa-a98b-a0db9e449907" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="32b2a644-321b-4b43-a760-ab8988c21b40" absoluteBounds="0.875, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_PriceHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="720f8788-1273-4d83-bcd3-32ee8a17708a" absoluteBounds="0.89000000000000012, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.8125 : 2.625); (1.8125 : 2.4631982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_PriceList/tbl_PriceList_tbl_PriceHistory" />
+      <nodes>
+        <classShapeMoniker Id="24b7d376-2790-4e79-b26b-b241f94cddfd" />
+        <classShapeMoniker Id="32b2a644-321b-4b43-a760-ab8988c21b40" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9d4dbb0e-44fc-46d2-80ee-ada4ba39ac06" isExpanded="false" absoluteBounds="3.125, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_AttractionHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e253c90-b108-4531-b29d-fba8e16c2959" absoluteBounds="3.14, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 1.375); (4.25 : 0.95)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_PriceListAttraction/tbl_PriceListAttraction_tbl_AttractionHistory" />
+      <nodes>
+        <classShapeMoniker Id="19a6e33e-8811-48aa-a98b-a0db9e449907" />
+        <classShapeMoniker Id="9d4dbb0e-44fc-46d2-80ee-ada4ba39ac06" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="99a6c4bd-5127-437a-bc8a-b3987514ca18" absoluteBounds="4.5, 3, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_GateHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba39adb0-3729-4abc-9dab-0beca98ba6be" absoluteBounds="4.5150000000000006, 3.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.25 : 2.06814697265625); (6.0964 : 2.06814697265625); (6.0964 : 2.8464); (5.5 : 2.8464); (5.5 : 3)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Gate/tbl_Gate_tbl_GateHistory" />
+      <nodes>
+        <classShapeMoniker Id="0950ae50-97e3-45fb-8d14-36bd242ce1c5" />
+        <classShapeMoniker Id="99a6c4bd-5127-437a-bc8a-b3987514ca18" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="69705237-778f-4044-93cd-7cdb0b3e437e" absoluteBounds="3.25, 4.75, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/AquaparkDBDataContext/tbl_Visit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dee92a24-2e66-4118-8536-fd8be8a44e5b" absoluteBounds="3.2649999999999997, 5.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.875 : 4.75); (4.875 : 4.57859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Visit/tbl_Visit_tbl_GateHistory" />
+      <nodes>
+        <classShapeMoniker Id="69705237-778f-4044-93cd-7cdb0b3e437e" />
+        <classShapeMoniker Id="99a6c4bd-5127-437a-bc8a-b3987514ca18" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 5.44314697265625); (5.25 : 5.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_Pass/tbl_Pass_tbl_Visit" />
+      <nodes>
+        <classShapeMoniker Id="996eebe9-cae5-4520-8ead-68534692e56e" />
+        <classShapeMoniker Id="69705237-778f-4044-93cd-7cdb0b3e437e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.88064697265625); (3.28125 : 2.88064697265625); (3.28125 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_PriceList/tbl_PriceList_tbl_Visit" />
+      <nodes>
+        <classShapeMoniker Id="24b7d376-2790-4e79-b26b-b241f94cddfd" />
+        <classShapeMoniker Id="69705237-778f-4044-93cd-7cdb0b3e437e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 4.95); (1.75 : 5.73159912109375); (3.25 : 5.73159912109375)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AquaparkDBDataContext/tbl_RFIDWatch/tbl_RFIDWatch_tbl_Visit" />
+      <nodes>
+        <classShapeMoniker Id="f09f48f0-a1bb-4320-84af-1a63542be4b0" />
+        <classShapeMoniker Id="69705237-778f-4044-93cd-7cdb0b3e437e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

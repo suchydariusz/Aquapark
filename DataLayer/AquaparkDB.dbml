@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AquaparkDB" Class="AquaparkDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=M1;Initial Catalog=AquaparkDB;Integrated Security=True" SettingsObjectName="DataLayer.Properties.Settings" SettingsPropertyName="AquaparkDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_Attraction" Member="tbl_Attractions">
+    <Type Name="tbl_Attraction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Attraction_tbl_Gate" Member="tbl_Gates" ThisKey="ID" OtherKey="IDAttraction" Type="tbl_Gate" />
+      <Association Name="tbl_Attraction_tbl_PriceListAttraction" Member="tbl_PriceListAttractions" ThisKey="ID" OtherKey="IDAttraction" Type="tbl_PriceListAttraction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Gate" Member="tbl_Gates">
+    <Type Name="tbl_Gate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IDAttraction" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Gate_tbl_GateHistory" Member="tbl_GateHistories" ThisKey="ID" OtherKey="IDGate" Type="tbl_GateHistory" />
+      <Association Name="tbl_Attraction_tbl_Gate" Member="tbl_Attraction" ThisKey="IDAttraction" OtherKey="ID" Type="tbl_Attraction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Pass" Member="tbl_Passes">
+    <Type Name="tbl_Pass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WhenEnds" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IDClient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Pass_tbl_Visit" Member="tbl_Visits" ThisKey="ID" OtherKey="IDPass" Type="tbl_Visit" />
+      <Association Name="tbl_Client_tbl_Pass" Member="tbl_Client" ThisKey="IDClient" OtherKey="ID" Type="tbl_Client" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_PriceList" Member="tbl_PriceLists">
+    <Type Name="tbl_PriceList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Entry" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_PriceList_tbl_PriceHistory" Member="tbl_PriceHistories" ThisKey="ID" OtherKey="IDPriceList" Type="tbl_PriceHistory" />
+      <Association Name="tbl_PriceList_tbl_Visit" Member="tbl_Visits" ThisKey="ID" OtherKey="IDPriceEntry" Type="tbl_Visit" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_RFIDWatch" Member="tbl_RFIDWatches">
+    <Type Name="tbl_RFIDWatch">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_RFIDWatch_tbl_Visit" Member="tbl_Visits" ThisKey="ID" OtherKey="IDWatch" Type="tbl_Visit" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Client" Member="tbl_Clients">
+    <Type Name="tbl_Client">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PESEL" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Client_tbl_Pass" Member="tbl_Passes" ThisKey="ID" OtherKey="IDClient" Type="tbl_Pass" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_PriceListAttraction" Member="tbl_PriceListAttractions">
+    <Type Name="tbl_PriceListAttraction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PriceAttraction" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="IDAttraction" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_PriceListAttraction_tbl_AttractionHistory" Member="tbl_AttractionHistories" ThisKey="ID" OtherKey="IDAttractionList" Type="tbl_AttractionHistory" />
+      <Association Name="tbl_Attraction_tbl_PriceListAttraction" Member="tbl_Attraction" ThisKey="IDAttraction" OtherKey="ID" Type="tbl_Attraction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_PriceHistory" Member="tbl_PriceHistories">
+    <Type Name="tbl_PriceHistory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IDPriceList" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TicketName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TicketPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_PriceList_tbl_PriceHistory" Member="tbl_PriceList" ThisKey="IDPriceList" OtherKey="ID" Type="tbl_PriceList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_AttractionHistory" Member="tbl_AttractionHistories">
+    <Type Name="tbl_AttractionHistory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IDAttractionList" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttractionName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AttractionPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_PriceListAttraction_tbl_AttractionHistory" Member="tbl_PriceListAttraction" ThisKey="IDAttractionList" OtherKey="ID" Type="tbl_PriceListAttraction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_GateHistory" Member="tbl_GateHistories">
+    <Type Name="tbl_GateHistory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IDGate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDVisit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_Gate_tbl_GateHistory" Member="tbl_Gate" ThisKey="IDGate" OtherKey="ID" Type="tbl_Gate" IsForeignKey="true" />
+      <Association Name="tbl_Visit_tbl_GateHistory" Member="tbl_Visit" ThisKey="IDVisit" OtherKey="ID" Type="tbl_Visit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Visit" Member="tbl_Visits">
+    <Type Name="tbl_Visit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StopTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDWatch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDPriceEntry" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDPass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Visit_tbl_GateHistory" Member="tbl_GateHistories" ThisKey="ID" OtherKey="IDVisit" Type="tbl_GateHistory" />
+      <Association Name="tbl_Pass_tbl_Visit" Member="tbl_Pass" ThisKey="IDPass" OtherKey="ID" Type="tbl_Pass" IsForeignKey="true" />
+      <Association Name="tbl_PriceList_tbl_Visit" Member="tbl_PriceList" ThisKey="IDPriceEntry" OtherKey="ID" Type="tbl_PriceList" IsForeignKey="true" />
+      <Association Name="tbl_RFIDWatch_tbl_Visit" Member="tbl_RFIDWatch" ThisKey="IDWatch" OtherKey="ID" Type="tbl_RFIDWatch" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
