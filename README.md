@@ -1,4 +1,4 @@
-<h2>Aquapark - Projekt realizowany w ramach zaliczenia przedmiotu z baz danych.</h2>
+<h2>Aquapark - Projekt realizowany w ramach przedmiotu z baz danych.</h2>
 <h3>Tematem projektu było zaprojektowanie bazy danych oraz napisanie aplikacji wspomagającej pracę aquaparku</h3>
 <p>Aplikacja została napisana przy współpracy z <a href="https://github.com/michalkubica">Michał Kubica</a>
 <p>Aplikacja zakładała sprzedaż biletów, karnetów, utrzymywanie cennika biletów, atrakcji z możliwością zmiany ich cen oraz czasu
